@@ -1,0 +1,6 @@
+export * from './burger'
+export * from './header'
+export * from './landing'
+export * from './cart'
+export * from './footer'
+export * from './cat'

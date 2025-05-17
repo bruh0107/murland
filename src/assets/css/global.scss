@@ -1,0 +1,48 @@
+* {
+  @apply m-0 p-0 box-border;
+}
+
+html, body {
+  @apply text-base;
+  scroll-behavior: smooth;
+}
+
+body {
+  @apply font-main text-dark bg-background;
+}
+
+body:not(:has(.burger-menu._closed)) {
+  @apply overflow-hidden;
+}
+
+.inner {
+  @apply w-full mx-auto;
+}
+
+a {
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+button {
+  @apply cursor-pointer border-none duration-300;
+}
+
+@layer utilities {
+  .card-shadow {
+    box-shadow: 0 4px 10px 0 rgba(82, 55, 55, 0.25);
+  }
+  .card-shadow-hover {
+    box-shadow: 0 4px 15px 0 rgba(82, 55, 55, 0.50);
+  }
+  .card-shadow-sm {
+    box-shadow: 0 2px 8px 0 rgba(82, 55, 55, 0.25);
+  }
+  .card-shadow-sm-active {
+    box-shadow: 0 2px 8px 0 rgba(82, 55, 55, 0.50);
+  }
+
+  .font-h2 {
+    @apply text-2xl md:text-4xl lg:text-5xl leading-none font-second;
+  }
+}
