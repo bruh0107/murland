@@ -1,19 +1,33 @@
 <template>
   <div class="cats-add">
     <div>
-      <form action="" class="cats-add__form">
+      <form @submit.prevent="submit" class="cats-add__form">
         <div class="flex flex-col gap-2.5">
-          <form-input placeholder="Введите имя" />
+          <form-input placeholder="Введите имя" v-model="data.name" />
           <div class="flex gap-2.5">
-            <select class="select-input">
-              <option class="select-input">qweasd123</option>
+            <select class="select-input" v-model="data.breed_id">
+              <option
+                class="select-input"
+                v-for="(gender, index) in CAT_BREEDS"
+                :key="index"
+                :value="gender"
+              >
+                {{ gender }}
+              </option>
             </select>
-            <select class="select-input">
-              <option class="select-input">qweasd123</option>
+            <select class="select-input" v-model="data.gender">
+              <option
+                class="select-input"
+                v-for="(gender, index) in CAT_GENDER"
+                :key="index"
+                :value="gender"
+              >
+                {{ gender }}
+              </option>
             </select>
           </div>
-          <form-input type="date" />
-          <form-input placeholder="Введите окрас" />
+          <form-input type="date" v-model="data.birth_date" />
+          <form-input placeholder="Введите окрас" v-model="data.color" />
           <div class="flex gap-2.5">
             <select class="select-input">
               <option class="select-input">qweasd123</option>
@@ -30,7 +44,23 @@
 </template>
 
 <script setup>
-import { FormInput, AppButton } from '@/shared'
+import { FormInput, AppButton, CAT_GENDER, CAT_BREEDS } from '@/shared'
+import { catEntity } from '@/entities'
+import { ref } from 'vue'
+
+const { addCat } = catEntity.useStore()
+
+const data = ref({
+  name: '',
+  gender: CAT_GENDER['кот'],
+  birth_date: new Date(),
+  color: '',
+  breed_id: CAT_BREEDS['Абиссинская'],
+  status: '',
+  file: '',
+})
+
+const submit = () => addCat(data.value)
 </script>
 
 <style scoped lang="scss">
