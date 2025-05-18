@@ -13,6 +13,19 @@ const routes = [
     path: Routes.catalog.path,
     component: () => import('@/pages/catalog-page/CatalogPage.vue'),
   },
+  {
+    name: Routes.admin.name,
+    path: Routes.admin.path,
+    component: () => import('@/pages/admin-page/AdminPage.vue'),
+    meta: { title: 'Murland - Админ-панель' },
+    children: [
+      {
+        name: 'login',
+        path: 'login',
+        component: () => import('@/features/admin/auth/ui/AdminAuth.vue'),
+      },
+    ],
+  },
 ]
 
 export const router = createRouter({

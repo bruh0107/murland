@@ -7,4 +7,12 @@ export const Routes = {
     path: '/catalog',
     name: 'catalog',
   },
+  admin: {
+    path: '/admin',
+    defaultPath: '/admin',
+    name: 'admin',
+    children: {
+      login: 'login',
+    },
+  },
 }

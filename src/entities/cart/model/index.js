@@ -18,7 +18,9 @@ export const useStore = defineStore('cart', () => {
 
   const countCats = computed(() => cart.value.length)
 
-  const addToCart = (id) => !cart.value.includes(id) && cart.value.push(id)
+  const addToCart = (id) => {
+    if (!cart.value.includes(id)) cart.value.push(id)
+  }
 
   const removeFromCart = (id) => {
     const index = cart.value.indexOf(id)
