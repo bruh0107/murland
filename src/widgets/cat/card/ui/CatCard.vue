@@ -9,26 +9,22 @@
         </div>
       </div>
     </div>
-    <cart-add v-if="interaction" :id="item?.id">
-      <app-button @click="openContactForm" class="cat-card__btn" size="small" color="primary">
-        Узнать цену
-      </app-button>
-    </cart-add>
-    <div
-      class="flex items-center gap-5 max-xl:hidden"
-      :class="interaction ? 'justify-evenly' : 'justify-start'"
-    >
-      <app-button size="small" color="primary"> Подробнее </app-button>
-      <cart-add v-if="interaction" :id="item?.id">
-        <app-button size="small" color="accent" @click="openContactForm"> Узнать цену </app-button>
-      </cart-add>
+    <div class="flex items-center gap-5 max-xl:hidden">
+      <template v-if="route.name?.startsWith('admin')">
+        <app-button size="small" color="primary">Редактировать</app-button>
+        <app-button size="small" color="delete">Удалить</app-button>
+      </template>
+      <app-button v-else size="small" color="primary"> Подробнее </app-button>
     </div>
   </article>
 </template>
 
 <script setup>
-import { AppButton, useModal } from '@/shared'
-import { CatFields, CartAdd } from '@/features'
+import { AppButton } from '@/shared'
+import { CatFields } from '@/features'
+import { useRoute } from 'vue-router'
+
+const route = useRoute()
 
 const props = defineProps({
   item: {
@@ -44,9 +40,6 @@ const props = defineProps({
     default: false,
   },
 })
-
-const { openModal } = useModal()
-const openContactForm = () => openModal({ name: 'cart' })
 </script>
 
 <style scoped lang="scss">

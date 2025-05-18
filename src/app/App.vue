@@ -11,15 +11,6 @@
 import { DefaultLayout } from '@/app/layouts'
 import { CartButton } from '@/features'
 import { AppBurger, CartModal } from '@/widgets'
-import { catEntity } from '@/entities'
-import { onMounted } from 'vue'
-
-const { getChildren, getGraduates } = catEntity.useStore()
-
-onMounted(() => {
-  getChildren()
-  getGraduates()
-})
 </script>
 
 <style lang="scss">

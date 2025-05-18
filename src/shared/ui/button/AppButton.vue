@@ -51,6 +51,10 @@ const props = defineProps({
     @apply bg-white text-primary hover:bg-primary-550 active:bg-primary active:text-white;
   }
 
+  &-delete {
+    @apply bg-delete text-white;
+  }
+
   &-normal {
     @apply py-[1.125rem] px-[3.75rem] text-2xl leading-none;
   }

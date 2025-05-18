@@ -1,10 +1,10 @@
 <template>
   <div class="admin-auth">
     <h2 class="admin-auth__title">Вход в админ-панель Murland</h2>
-    <form action="" class="admin-auth__form">
+    <form @submit.prevent="submit" class="admin-auth__form">
       <div class="flex flex-col gap-2.5">
-        <form-input placeholder="Введите логин" />
-        <form-input type="password" placeholder="Введите пароль" />
+        <form-input placeholder="Введите логин" v-model="data.login" />
+        <form-input type="password" placeholder="Введите пароль" v-model="data.password" />
       </div>
       <app-button color="primary">Войти</app-button>
     </form>
@@ -13,6 +13,17 @@
 
 <script setup>
 import { FormInput, AppButton } from '@/shared'
+import { ref } from 'vue'
+import { accountEntity } from '@/entities'
+
+const { login } = accountEntity.useStore()
+
+const data = ref({
+  login: '',
+  password: '',
+})
+
+const submit = () => login(data.value)
 </script>
 
 <style scoped lang="scss">

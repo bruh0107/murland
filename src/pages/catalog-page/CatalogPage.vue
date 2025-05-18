@@ -17,10 +17,12 @@
 <script setup>
 import { LandingCatFilter } from '@/features'
 import { catEntity } from '@/entities'
-import { useFilteredData } from '@/shared'
 import { CatCard } from '@/widgets'
+import { ref } from 'vue'
+import { asyncComputed } from '@vueuse/core'
 
-const { data: cats, params } = useFilteredData(catEntity.getChildren)
+const params = ref()
+const cats = asyncComputed(() => catEntity.getCats(params.value))
 // вынести это в отдельный виджет и то что в landing children
 </script>
 

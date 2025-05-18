@@ -18,11 +18,42 @@ const routes = [
     path: Routes.admin.path,
     component: () => import('@/pages/admin-page/AdminPage.vue'),
     meta: { title: 'Murland - Админ-панель' },
+    redirect: { name: 'admin.login' },
     children: [
       {
-        name: 'login',
+        name: 'admin.login',
         path: 'login',
         component: () => import('@/features/admin/auth/ui/AdminAuth.vue'),
+      },
+      {
+        name: 'admin.cats',
+        path: 'cats',
+        component: () => import('@/features/admin/cats/ui/AdminCats.vue'),
+      },
+      {
+        name: 'admin.add-cats',
+        path: 'cats/add',
+        component: () => import('@/features/admin/cats/ui/AdminCatsAdd.vue'),
+      },
+      {
+        name: 'admin.parents',
+        path: 'parents',
+        component: () => import('@/features/admin/parents/ui/AdminParents.vue'),
+      },
+      {
+        name: 'admin.add-parents',
+        path: 'parents/add',
+        component: () => import('@/features/admin/parents/ui/AdminParentsAdd.vue'),
+      },
+      {
+        name: 'admin.orders',
+        path: 'orders',
+        component: () => import('@/features/admin/orders/ui/AdminOrders.vue'),
+      },
+      {
+        name: 'admin.contacts',
+        path: 'orders',
+        component: () => import('@/features/admin/contacts/ui/AdminContacts.vue'),
       },
     ],
   },

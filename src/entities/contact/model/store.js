@@ -1,12 +1,12 @@
 import { defineStore } from 'pinia'
-import { accountEntity } from '@/entities'
+import { contactEntity } from '@/entities'
 import { ref } from 'vue'
 
-export const useStore = defineStore('account', () => {
+export const useStore = defineStore('contact', () => {
   const contacts = ref({})
 
   const getContacts = async () => {
-    contacts.value = await accountEntity.getContacts()
+    contacts.value = await contactEntity.getContacts()
   }
 
   return {

@@ -35,12 +35,12 @@
 </template>
 
 <script setup>
-import { accountEntity } from '@/entities'
+import { contactEntity } from '@/entities'
 import { FooterNavigation } from '@/features'
 import { AppIcon } from '@/shared'
 import { storeToRefs } from 'pinia'
 
-const { contacts } = storeToRefs(accountEntity.useStore())
+const { contacts } = storeToRefs(contactEntity.useStore())
 
 /** @param {string} link */
 const formattedLink = (link) => {

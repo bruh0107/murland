@@ -13,6 +13,12 @@ export const Routes = {
     name: 'admin',
     children: {
       login: 'login',
+      cats: 'cats',
+      'add-cat': 'add-cat',
+      parents: 'parents',
+      'add-parents': 'add-parents',
+      orders: 'orders',
+      contacts: 'contacts',
     },
   },
 }

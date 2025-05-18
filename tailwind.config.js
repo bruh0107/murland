@@ -26,6 +26,7 @@ export default {
         'accent-400': 'var(--accent-color-400)',
         background: 'var(--background-color)',
         dark: 'var(--dark-color)',
+        delete: 'var(--delete-color)',
       },
     },
   },

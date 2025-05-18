@@ -1,3 +1,4 @@
-export * as accountEntity from './account'
+export * as contactEntity from './contact'
 export * as catEntity from './cat'
 export * as cartEntity from './cart'
+export * as accountEntity from './account'

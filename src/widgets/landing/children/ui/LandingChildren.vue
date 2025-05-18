@@ -5,7 +5,13 @@
         <h2 class="catalog-title">Наши малыши ищут новых мам и пап!</h2>
         <landing-cat-filter class="mb-5" v-model="params" />
         <div class="catalog-cards">
-          <cat-card v-for="cat in cats" :key="cat.id" :item="cat" interaction is-child />
+          <cat-card
+            v-for="cat in cats?.slice(0, 8)"
+            :key="cat.id"
+            :item="cat"
+            interaction
+            is-child
+          />
         </div>
       </div>
     </div>
@@ -13,12 +19,14 @@
 </template>
 
 <script setup>
-import { useFilteredData } from '@/shared'
 import { catEntity } from '@/entities'
 import { LandingCatFilter } from '@/features'
 import { CatCard } from '@/widgets'
+import { ref } from 'vue'
+import { asyncComputed } from '@vueuse/core'
 
-const { data: cats, params } = useFilteredData(catEntity.getChildren)
+const params = ref({})
+const cats = asyncComputed(() => catEntity.getCats(params.value))
 </script>
 
 <style scoped lang="scss">

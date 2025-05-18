@@ -18,10 +18,10 @@ import {
   LandingParents,
   LandingContacts,
 } from '@/widgets'
-import { accountEntity } from '@/entities'
+import { contactEntity } from '@/entities'
 import { onMounted } from 'vue'
 
-const { getContacts } = accountEntity.useStore()
+const { getContacts } = contactEntity.useStore()
 
 onMounted(() => getContacts())
 </script>

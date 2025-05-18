@@ -1,6 +1,11 @@
 <template>
   <nav class="nav">
-    <router-link v-for="(item, index) in navItems" :key="index" :to="item.href" class="nav__item">
+    <router-link
+      v-for="(item, index) in adminNavItems"
+      :key="index"
+      :to="{ name: item.to }"
+      class="nav__item"
+    >
       {{ item.title }}
     </router-link>
   </nav>
@@ -9,7 +14,7 @@
 <script setup>
 import { navigationFeature } from '@/features'
 
-const { navItems } = navigationFeature.useStore()
+const { adminNavItems } = navigationFeature.useStore()
 </script>
 
 <style scoped lang="scss">

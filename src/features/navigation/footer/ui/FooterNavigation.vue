@@ -1,13 +1,13 @@
 <template>
   <nav class="footer-navigation">
-    <a
+    <router-link
       v-for="(item, index) in navItems"
       :key="index"
-      :href="item.href"
+      :to="item.href"
       class="footer-navigation__item"
     >
       {{ item.title }}
-    </a>
+    </router-link>
   </nav>
 </template>
 
@@ -16,7 +16,7 @@ const navItems = [
   { title: 'Главная', href: '#' },
   { title: 'Почему именно мы?', href: '#banner' },
   { title: 'Родители малышей', href: '#parents' },
-  { title: 'Котята', href: '#children' },
+  { title: 'Котята', href: '/catalog' },
   { title: 'О нашем питомнике', href: '#about-us' },
   { title: 'Свяжитесь с нами', href: '#contacts' },
 ]

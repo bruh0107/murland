@@ -4,15 +4,10 @@
       <router-link :to="Routes.landing.path">
         <app-icon class="header__logo" name="logo" />
       </router-link>
-      <header-navigation />
+      <admin-header-navigation />
       <div class="flex gap-8 items-center">
-        <app-button
-          @click="openModal({ name: 'cart' })"
-          class="header__btn text-nowrap"
-          color="primary"
-          size="small"
-        >
-          Позвоните нам
+        <app-button class="header__btn text-nowrap" color="primary" size="small">
+          Выход
         </app-button>
         <app-icon class="header__burger-menu" name="burger-menu" @click="toggleOpen" />
       </div>
@@ -21,11 +16,10 @@
 </template>
 
 <script setup>
-import { AppIcon, AppButton, useBurgerMenu, useModal, Routes } from '@/shared'
-import { HeaderNavigation } from '@/features'
+import { AppIcon, AppButton, useBurgerMenu, Routes } from '@/shared'
+import { AdminHeaderNavigation } from '@/features'
 
 const { toggleOpen } = useBurgerMenu()
-const { openModal } = useModal()
 </script>
 
 <style scoped lang="scss">

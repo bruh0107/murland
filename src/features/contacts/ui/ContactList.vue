@@ -12,13 +12,13 @@
 <script setup>
 import { ContactItem } from '@/shared/index.js'
 import { storeToRefs } from 'pinia'
-import { accountEntity } from '@/entities'
+import { contactEntity } from '@/entities'
 import { computed } from 'vue'
 
 const props = defineProps({
   isShort: { type: Boolean, default: false },
 })
-const { contacts: storedContacts } = storeToRefs(accountEntity.useStore())
+const { contacts: storedContacts } = storeToRefs(contactEntity.useStore())
 
 const contacts = computed(() => {
   const data = storedContacts.value

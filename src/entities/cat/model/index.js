@@ -1,23 +1,34 @@
 import { defineStore } from 'pinia'
 import { catEntity } from '@/entities'
 import { ref } from 'vue'
+import { useRouter } from 'vue-router'
+import { Routes } from '@/shared'
 
 export const useStore = defineStore('cat', () => {
-  const children = ref([])
-  const graduates = ref([])
+  const cats = ref([])
+  const parents = ref([])
+  const router = useRouter()
 
-  const getChildren = async ({ breed, gender } = {}) => {
-    children.value = await catEntity.getChildren({ breed, gender })
+  const getCats = async (params) => {
+    cats.value = await catEntity.getCats(params)
+    return cats.value
   }
 
-  const getGraduates = async () => {
-    graduates.value = await catEntity.getGraduates()
+  const getParents = async () => {
+    parents.value = await catEntity.getParents()
+    return parents.value
+  }
+
+  const addCat = async (model) => {
+    const { data } = await catEntity.createCat(model)
+    router.push(Routes.admin.children.cats)
   }
 
   return {
-    children,
-    graduates,
-    getChildren,
-    getGraduates,
+    cats,
+    parents,
+    getCats,
+    getParents,
+    addCat,
   }
 })
