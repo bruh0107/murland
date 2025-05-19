@@ -6,12 +6,17 @@ import { Routes } from '@/shared'
 
 export const useStore = defineStore('cat', () => {
   const cats = ref([])
+  const catsAdmin = ref([])
   const parents = ref([])
   const router = useRouter()
 
   const getCats = async (params) => {
-    cats.value = await catEntity.getCats(params)
-    return cats.value
+    return await catEntity.getCats(params)
+  }
+
+  const getAdminCats = async () => {
+    catsAdmin.value = await catEntity.getAdminCats()
+    return catsAdmin.value
   }
 
   const getParents = async () => {
@@ -32,8 +37,26 @@ export const useStore = defineStore('cat', () => {
     for (const [key, value] of Object.entries(model)) {
       formData.append(key, value)
     }
-    const { data } = await catEntity.createCat(formData)
+    await catEntity.createCat(formData)
     router.push({ name: `${Routes.admin.children.cats}` })
+  }
+
+  const editCat = async (id, model) => {
+    await catEntity.updateCat(id, model)
+    router.push({ name: `${Routes.admin.children.cats}` })
+  }
+
+  const deleteCat = async (id) => {
+    await catEntity.deleteCat(id)
+    await getAdminCats()
+  }
+
+  const getOneCat = async (id) => {
+    return await catEntity.getOneCat(id)
+  }
+
+  const setAvailableCats = async () => {
+    cats.value = await getCats({})
   }
 
   return {
@@ -44,5 +67,11 @@ export const useStore = defineStore('cat', () => {
     addCat,
     getMothers,
     getFathers,
+    editCat,
+    deleteCat,
+    getAdminCats,
+    catsAdmin,
+    getOneCat,
+    setAvailableCats
   }
 })

@@ -1,4 +1,4 @@
-import { computed } from 'vue'
+import {computed, ref} from 'vue'
 import { useLocalStorage } from '@vueuse/core'
 import { defineStore, storeToRefs } from 'pinia'
 
@@ -6,14 +6,14 @@ import { useModal } from '@/shared'
 import { catEntity, cartEntity } from '@/entities'
 
 export const useStore = defineStore('cart', () => {
-  const { children } = storeToRefs(catEntity.useStore())
+  const { cats } = storeToRefs(catEntity.useStore())
 
   const { openModal } = useModal()
 
   const cart = useLocalStorage('cart', [])
 
   const cartChildren = computed(() => {
-    return cart.value.map((id) => children.value.find((child) => child?.id === id))
+    return cart.value.map((id) => cats.value.find((child) => child?.id === id))
   })
 
   const countCats = computed(() => cart.value.length)
@@ -29,7 +29,7 @@ export const useStore = defineStore('cart', () => {
 
   const sendApplication = async (model) => {
     try {
-      await cartEntity.sendApplication({ cats: cart.value, ...model })
+      await cartEntity.sendApplication({ cat_ids: cart.value, ...model })
     } finally {
       cart.value = []
       openModal({})

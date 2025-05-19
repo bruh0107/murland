@@ -11,6 +11,12 @@
 import { DefaultLayout } from '@/app/layouts'
 import { CartButton } from '@/features'
 import { AppBurger, CartModal } from '@/widgets'
+import { catEntity } from '@/entities'
+import {onMounted} from "vue";
+
+const { setAvailableCats } = catEntity.useStore()
+
+onMounted(() => setAvailableCats())
 </script>
 
 <style lang="scss">

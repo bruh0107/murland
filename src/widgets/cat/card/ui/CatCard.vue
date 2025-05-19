@@ -11,10 +11,14 @@
     </div>
     <div class="flex items-center gap-5 max-xl:hidden">
       <template v-if="route.name?.startsWith('admin')">
-        <app-button size="small" color="primary">Редактировать</app-button>
-        <app-button size="small" color="delete">Удалить</app-button>
+        <router-link :to='`/admin/cats/edit/${item.id}`'>
+          <app-button size="small" color="primary">Редактировать</app-button>
+        </router-link>
+        <app-button @click="deleteCat(id)" size="small" color="delete">Удалить</app-button>
       </template>
-      <app-button v-else size="small" color="primary"> Подробнее </app-button>
+      <router-link :to="`cats/${item.id}`" v-else>
+        <app-button size="small" color="primary"> Подробнее </app-button>
+      </router-link>
     </div>
   </article>
 </template>
@@ -22,6 +26,7 @@
 <script setup>
 import { AppButton } from '@/shared'
 import { CatFields } from '@/features'
+import { catEntity } from '@/entities'
 import { useRoute } from 'vue-router'
 
 const route = useRoute()
@@ -40,6 +45,8 @@ const props = defineProps({
     default: false,
   },
 })
+
+const { deleteCat } = catEntity.useStore()
 </script>
 
 <style scoped lang="scss">

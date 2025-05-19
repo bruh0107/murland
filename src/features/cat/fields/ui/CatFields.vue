@@ -34,13 +34,6 @@ const fields = computed(() => [
   ['Порода:', CAT_BREEDS[props.item?.breed] ?? '-'],
   ['Дата рождения:', props.item?.birth_date?.split('-').reverse().join('.') ?? '-'],
   ['Окрас:', props.item?.color ?? '-'],
-  ...(props.detailed
-    ? [
-        ['Титул:', props.item?.title ?? '-'],
-        ['Анализы:', props.item?.analyses ?? '-'],
-      ]
-    : []),
-  ['', props.item?.additional_info],
 ])
 </script>
 

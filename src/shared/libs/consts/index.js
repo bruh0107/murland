@@ -7,3 +7,9 @@ export const CAT_GENDER = {
   'кот': 'Кот',
   'кошка': 'Кошка',
 }
+
+export const ORDER_STATUS = {
+  'pending': 'В ожидании',
+  'approved': 'Одобрено',
+  'canceled': 'Отклонено'
+}

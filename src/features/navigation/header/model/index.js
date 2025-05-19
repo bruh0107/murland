@@ -8,7 +8,7 @@ const navItems = [
 const adminNavItems = [
   { title: 'Котята', to: 'admin.cats' },
   { title: 'Родители', to: 'admin.parents' },
-  { title: 'Заявки', to: 'admin.orders' },
+  { title: 'Заявки', to: 'admin.order' },
   { title: 'Контакты', to: 'admin.contacts' },
 ]
 

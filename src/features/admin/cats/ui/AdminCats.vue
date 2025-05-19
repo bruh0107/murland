@@ -9,7 +9,7 @@
           </router-link>
         </div>
         <div class="cats-cards">
-          <cat-card v-for="cat in cats" :key="cat.id" :item="cat" interaction is-child />
+          <cat-card v-for="cat in catsAdmin" :key="cat.id" :item="cat" interaction is-child />
         </div>
       </div>
     </div>
@@ -20,11 +20,13 @@
 import { AppButton } from '@/shared'
 import { catEntity } from '@/entities'
 import { CatCard } from '@/widgets'
-import { ref } from 'vue'
-import { asyncComputed } from '@vueuse/core'
+import {storeToRefs} from "pinia";
+import {onMounted} from "vue";
 
-const params = ref()
-const cats = asyncComputed(() => catEntity.getCats(params.value))
+const { getAdminCats } = catEntity.useStore()
+const { catsAdmin } = storeToRefs(catEntity.useStore())
+
+onMounted(() => getAdminCats())
 </script>
 
 <style scoped lang="scss">

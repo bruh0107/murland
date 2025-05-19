@@ -50,9 +50,8 @@
               </option>
             </select>
           </div>
-          <form-input class="w-full" type="file" @change="handleFileChange" />
         </div>
-        <app-button color="primary">Добавить котенка</app-button>
+        <app-button color="primary">Изменить котенка</app-button>
       </form>
     </div>
   </div>
@@ -62,8 +61,11 @@
 import { FormInput, AppButton, CAT_GENDER, CAT_BREEDS } from '@/shared'
 import { catEntity } from '@/entities'
 import { onMounted, ref } from 'vue'
+import { useRoute } from "vue-router";
 
-const { addCat, getMothers, getFathers } = catEntity.useStore()
+const route = useRoute()
+
+const { getMothers, getFathers, editCat } = catEntity.useStore()
 
 const mothers = ref([])
 const fathers = ref([])
@@ -77,17 +79,10 @@ const data = ref({
   status: '',
   photo: '',
   mother_id: 1,
-  father_id: 8,
+  father_id: 2,
 })
 
-const submit = () => addCat(data.value)
-
-const handleFileChange = (event) => {
-  const file = event.target.files[0]
-  if (file) {
-    data.value.photo = file
-  }
-}
+const submit = () => editCat(route.params.id, data.value)
 
 onMounted(() => {
   getMothers().then((data) => (mothers.value = data))
