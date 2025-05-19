@@ -1,7 +1,7 @@
 <template>
   <article class="cat-card card-shadow-sm lg:card-shadow">
     <div class="flex flex-col gap-2.5 lg:gap-5">
-      <img class="cat-card__img" :src="item.image" alt="cat photo" />
+      <img class="cat-card__img" :src="item.photo" alt="cat photo" />
       <div class="flex flex-col gap-1 lg:gap-2.5">
         <p class="cat-card__name">{{ item.name }}</p>
         <div class="cat-card__info">

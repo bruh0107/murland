@@ -15,11 +15,20 @@ export const useStore = defineStore('account-store', () => {
 
     token.value = data.token
     localStorage.setItem('token', token.value)
-    await router.push(Routes.admin.children.cats)
+    await router.push({ name: `${Routes.admin.children.cats}` })
+  }
+
+  const logout = async () => {
+    await accountEntity.logout()
+    localStorage.removeItem('token')
+    token.value = null
+
+    router.push(Routes.landing.path)
   }
 
   return {
     isAuth,
     login,
+    logout,
   }
 })

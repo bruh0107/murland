@@ -6,3 +6,5 @@ export const login = async (model) => {
     password: model.password,
   })
 }
+
+export const logout = () => api.get('admin/logout')

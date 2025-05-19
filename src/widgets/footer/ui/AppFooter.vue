@@ -27,7 +27,7 @@
               <app-icon class="footer-socials__item" name="whatsapp" />
             </a>
           </nav>
-          <p class="footer-years">© 20XX-2025 «HamumAby»</p>
+          <p class="footer-years">© 20XX-2025 «Murland»</p>
         </div>
       </div>
     </div>

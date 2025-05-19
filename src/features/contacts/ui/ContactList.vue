@@ -27,7 +27,7 @@ const contacts = computed(() => {
     { icon: 'phone', text: data?.phone },
     { icon: 'email', text: data?.email },
     !props.isShort && { icon: 'map', text: data?.address },
-    !props.isShort && { icon: 'clock', text: data?.working_time },
+    !props.isShort && { icon: 'clock', text: data?.work_hours },
   ].filter(Boolean)
 })
 </script>

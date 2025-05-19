@@ -6,7 +6,7 @@
       </router-link>
       <admin-header-navigation />
       <div class="flex gap-8 items-center">
-        <app-button class="header__btn text-nowrap" color="primary" size="small">
+        <app-button @click="logout" class="header__btn text-nowrap" color="primary" size="small">
           Выход
         </app-button>
         <app-icon class="header__burger-menu" name="burger-menu" @click="toggleOpen" />
@@ -18,7 +18,9 @@
 <script setup>
 import { AppIcon, AppButton, useBurgerMenu, Routes } from '@/shared'
 import { AdminHeaderNavigation } from '@/features'
+import { accountEntity } from '@/entities'
 
+const { logout } = accountEntity.useStore()
 const { toggleOpen } = useBurgerMenu()
 </script>
 

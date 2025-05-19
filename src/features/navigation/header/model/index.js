@@ -2,8 +2,7 @@ const navItems = [
   { title: 'О породах', href: '#breeds' },
   { title: 'Котята', href: '/catalog' },
   { title: 'Производители', href: '#parents' },
-  { title: 'Выпускники', href: '#graduates' },
-  { title: 'О нас', href: '#about-us' },
+  { title: 'Связаться с нами', href: '#contacts' },
 ]
 
 const adminNavItems = [

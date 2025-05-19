@@ -8,11 +8,11 @@
             <select class="select-input" v-model="data.breed_id">
               <option
                 class="select-input"
-                v-for="(gender, index) in CAT_BREEDS"
+                v-for="(breed, index) in CAT_BREEDS"
                 :key="index"
-                :value="gender"
+                :value="index === 'Бурма' ? 1 : 2"
               >
-                {{ gender }}
+                {{ breed }}
               </option>
             </select>
             <select class="select-input" v-model="data.gender">
@@ -29,13 +29,28 @@
           <form-input type="date" v-model="data.birth_date" />
           <form-input placeholder="Введите окрас" v-model="data.color" />
           <div class="flex gap-2.5">
-            <select class="select-input">
-              <option class="select-input">qweasd123</option>
+            <select class="select-input" v-model="data.mother_id">
+              <option
+                v-for="mother in mothers"
+                :key="mother.id"
+                :value="mother.id"
+                class="select-input"
+              >
+                {{ mother.name }}
+              </option>
             </select>
-            <select class="select-input">
-              <option class="select-input">qweasd123</option>
+            <select class="select-input" v-model="data.father_id">
+              <option
+                v-for="father in fathers"
+                :key="father.id"
+                :value="father.id"
+                class="select-input"
+              >
+                {{ father.name }}
+              </option>
             </select>
           </div>
+          <form-input type="file" @change="handleFileChange" />
         </div>
         <app-button color="primary">Добавить котенка</app-button>
       </form>
@@ -46,9 +61,12 @@
 <script setup>
 import { FormInput, AppButton, CAT_GENDER, CAT_BREEDS } from '@/shared'
 import { catEntity } from '@/entities'
-import { ref } from 'vue'
+import { onMounted, ref } from 'vue'
 
-const { addCat } = catEntity.useStore()
+const { addCat, getMothers, getFathers } = catEntity.useStore()
+
+const mothers = ref([])
+const fathers = ref([])
 
 const data = ref({
   name: '',
@@ -57,10 +75,24 @@ const data = ref({
   color: '',
   breed_id: CAT_BREEDS['Абиссинская'],
   status: '',
-  file: '',
+  photo: '',
+  mother_id: '',
+  father_id: '',
 })
 
 const submit = () => addCat(data.value)
+
+const handleFileChange = (event) => {
+  const file = event.target.files[0]
+  if (file) {
+    data.value.photo = file
+  }
+}
+
+onMounted(() => {
+  getMothers().then((data) => (mothers.value = data))
+  getFathers().then((data) => (fathers.value = data))
+})
 </script>
 
 <style scoped lang="scss">

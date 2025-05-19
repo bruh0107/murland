@@ -17,7 +17,6 @@ const navItems = [
   { title: 'Почему именно мы?', href: '#banner' },
   { title: 'Родители малышей', href: '#parents' },
   { title: 'Котята', href: '/catalog' },
-  { title: 'О нашем питомнике', href: '#about-us' },
   { title: 'Свяжитесь с нами', href: '#contacts' },
 ]
 </script>

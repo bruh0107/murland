@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import { accountEntity } from '@/entities'
 
 import { Routes } from '@/shared'
 
@@ -52,7 +53,7 @@ const routes = [
       },
       {
         name: 'admin.contacts',
-        path: 'orders',
+        path: 'contacts',
         component: () => import('@/features/admin/contacts/ui/AdminContacts.vue'),
       },
     ],
@@ -74,4 +75,14 @@ export const router = createRouter({
       return { top: 0 }
     }
   },
+})
+
+router.beforeEach((to, from, next) => {
+  const { isAuth } = accountEntity.useStore()
+
+  if (to.name?.startsWith('admin') && to.name !== 'admin.login' && !isAuth) {
+    return next({ name: `${Routes.admin.children.login}` })
+  }
+
+  next()
 })

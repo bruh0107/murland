@@ -19,9 +19,21 @@ export const useStore = defineStore('cat', () => {
     return parents.value
   }
 
+  const getMothers = async () => {
+    return await catEntity.getCats({ gender: 'кошка' })
+  }
+
+  const getFathers = async () => {
+    return await catEntity.getCats({ gender: 'кот' })
+  }
+
   const addCat = async (model) => {
-    const { data } = await catEntity.createCat(model)
-    router.push(Routes.admin.children.cats)
+    const formData = new FormData()
+    for (const [key, value] of Object.entries(model)) {
+      formData.append(key, value)
+    }
+    const { data } = await catEntity.createCat(formData)
+    router.push({ name: `${Routes.admin.children.cats}` })
   }
 
   return {
@@ -30,5 +42,7 @@ export const useStore = defineStore('cat', () => {
     getCats,
     getParents,
     addCat,
+    getMothers,
+    getFathers,
   }
 })

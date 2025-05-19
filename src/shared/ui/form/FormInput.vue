@@ -1,5 +1,5 @@
 <template>
-  <input class="form-input" v-bind="$props" v-mask="mask" v-model="model" />
+  <input class="form-input" v-bind="$props" v-mask="mask" v-model="model" @change="emit('change', $event)" />
 </template>
 
 <script setup>
@@ -17,6 +17,8 @@ defineProps({
     default: null,
   },
 })
+
+const emit = defineEmits(['change'])
 
 const model = defineModel({ type: [String, Number] })
 </script>
