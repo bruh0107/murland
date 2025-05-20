@@ -39,7 +39,7 @@ const parents = asyncComputed(() => catEntity.getParents())
   }
 
   &-title {
-    @apply font-second text-5xl text-primary;
+    @apply font-second text-5xl text-primary mb-[4rem];
   }
 
   &-cards {

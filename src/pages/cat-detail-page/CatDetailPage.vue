@@ -8,17 +8,23 @@
         <p>Порода: {{ cat.breed }}</p>
         <p>Дата рождения: {{ cat.birth_date }}</p>
         <p>Окрас: {{ cat.color }}</p>
-        <p>Родители: Муня и Кисяня</p>
+        <p v-if="cat.mother?.[0] && cat.father?.[0]">
+          Родители: {{ cat.mother?.[0]?.name }} и {{ cat.father?.[0]?.name }}
+        </p>
       </div>
-      <div class="cat-detail__parent">
-        <div class="flex flex-col items-center">
-          <img class="cat-detail__parent-photo" src="" alt="" />
-          <p>Муня</p>
-        </div>
-        <div class="flex flex-col items-center">
-          <img class="cat-detail__parent-photo" src="" alt="" />
-          <p>Кисяня</p>
-        </div>
+      <div class="flex gap-5" v-if="cat.mother?.[0] && cat.father?.[0]">
+        <router-link :to="`/cats/${cat.mother?.[0]?.id}`" class="cat-detail__parent">
+          <div class="flex flex-col items-center">
+            <img class="cat-detail__parent-photo" :src="cat.mother?.[0]?.photo" alt="" />
+            <p>{{ cat.mother?.[0]?.name }}</p>
+          </div>
+        </router-link>
+        <router-link :to="`/cats/${cat.father?.[0]?.id}`" class="cat-detail__parent">
+          <div class="flex flex-col items-center">
+            <img class="cat-detail__parent-photo" :src="cat.father?.[0]?.photo" alt="" />
+            <p>{{ cat.father?.[0]?.name }}</p>
+          </div>
+        </router-link>
       </div>
       <cart-add :id="+route.params.id">
         <app-button @click="openModal({ name: 'cart' })" size="small" color="primary"
@@ -32,7 +38,7 @@
 <script setup>
 import { AppButton, useModal } from '@/shared'
 import { catEntity } from '@/entities'
-import { onMounted, ref } from 'vue'
+import { onMounted, ref, watch } from 'vue'
 import { useRoute } from 'vue-router'
 import { CartAdd } from '@/features/index.js'
 
@@ -43,7 +49,18 @@ const { openModal } = useModal()
 
 const cat = ref({})
 
-onMounted(() => getOneCat(route.params.id).then((data) => (cat.value = data)))
+const getCat = () => {
+  getOneCat(route.params.id).then((data) => (cat.value = data))
+}
+
+watch(
+  () => route.params.id,
+  () => {
+    getCat()
+  },
+)
+
+onMounted(() => getCat())
 </script>
 
 <style scoped lang="scss">
@@ -66,7 +83,7 @@ onMounted(() => getOneCat(route.params.id).then((data) => (cat.value = data)))
     @apply flex gap-5;
 
     &-photo {
-      @apply w-[260px] h-[240px] rounded-[27px];
+      @apply w-[260px] h-[240px] rounded-[27px] object-cover;
     }
   }
 }

@@ -12,16 +12,6 @@
         label="Номер телефона"
         mask="+7 (###) ###-##-##"
       />
-      <form-checkbox v-model="model.check">
-        <template #label>
-          Я подтверждаю, что ознакомлен с условиями
-          <span @click="goToTerms" class="underline font-medium cursor-pointer">
-            Согласия на обработку персональных данных пользователя сайта
-          </span>
-          и выражаю согласие на обработку моих персональных данных в порядке и условиях, изложенных
-          документе
-        </template>
-      </form-checkbox>
       <app-button
         class="text-sm md:text-sm lg:text-2xl"
         color="primary"
@@ -35,15 +25,11 @@
 </template>
 
 <script setup>
-import { FormField, FormCheckbox, AppButton, Routes, useModal } from '@/shared'
+import { FormField, AppButton } from '@/shared'
 import { cartEntity } from '@/entities'
 import { computed, reactive } from 'vue'
-import { useRouter } from 'vue-router'
 
 const { sendApplication } = cartEntity.useStore()
-const { openModal } = useModal()
-
-const router = useRouter()
 
 const model = reactive({
   name: '',
@@ -52,13 +38,8 @@ const model = reactive({
 })
 
 const isValid = computed(() => {
-  return model.name && model.phone && model.check
+  return model.name && model.phone
 })
-
-const goToTerms = () => {
-  openModal({})
-  router.push(Routes.terms.path)
-}
 </script>
 
 <style scoped lang="scss"></style>
