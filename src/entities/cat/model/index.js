@@ -72,6 +72,6 @@ export const useStore = defineStore('cat', () => {
     getAdminCats,
     catsAdmin,
     getOneCat,
-    setAvailableCats
+    setAvailableCats,
   }
 })

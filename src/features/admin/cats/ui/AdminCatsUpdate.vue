@@ -61,7 +61,7 @@
 import { FormInput, AppButton, CAT_GENDER, CAT_BREEDS } from '@/shared'
 import { catEntity } from '@/entities'
 import { onMounted, ref } from 'vue'
-import { useRoute } from "vue-router";
+import { useRoute } from 'vue-router'
 
 const route = useRoute()
 
@@ -73,7 +73,7 @@ const fathers = ref([])
 const data = ref({
   name: '',
   gender: CAT_GENDER['кот'],
-  birth_date: new Date(),
+  birth_date: '',
   color: '',
   breed_id: 1,
   status: '',

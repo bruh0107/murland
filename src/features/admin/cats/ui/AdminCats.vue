@@ -20,8 +20,8 @@
 import { AppButton } from '@/shared'
 import { catEntity } from '@/entities'
 import { CatCard } from '@/widgets'
-import {storeToRefs} from "pinia";
-import {onMounted} from "vue";
+import { storeToRefs } from 'pinia'
+import { onMounted } from 'vue'
 
 const { getAdminCats } = catEntity.useStore()
 const { catsAdmin } = storeToRefs(catEntity.useStore())

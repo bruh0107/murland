@@ -10,14 +10,26 @@
             <div class="flex justify-between">
               <p class="text-[#C4C1C1]">Заявка #{{ order.id }}</p>
               <div class="flex gap-2.5" v-if="order.status === 'pending'">
-                <app-icon @click="orderApprove(order.id)" class="w-6 h-6 text-[#41A341] cursor-pointer" name="check" />
-                <app-icon @click="orderDecline(order.id)" class="w-6 h-6 text-[#CC0000] cursor-pointer" name="cross-order" />
+                <app-icon
+                  @click="orderApprove(order.id)"
+                  class="w-6 h-6 text-[#41A341] cursor-pointer"
+                  name="check"
+                />
+                <app-icon
+                  @click="orderDecline(order.id)"
+                  class="w-6 h-6 text-[#CC0000] cursor-pointer"
+                  name="cross-order"
+                />
               </div>
-              <p class="text-[#41A341]" v-else-if="order.status === 'approved'">{{ ORDER_STATUS.approved }}</p>
+              <p class="text-[#41A341]" v-else-if="order.status === 'approved'">
+                {{ ORDER_STATUS.approved }}
+              </p>
               <p class="text-[#CC0000]" v-else>{{ ORDER_STATUS.canceled }}</p>
             </div>
             <p>
-              <span class="text-2xl font-bold text-primary" v-for="(cat, index) in order.cats">{{ cat.name }}<span v-if="order.cats?.length - 1 > index">, </span></span>
+              <span class="text-2xl font-bold text-primary" v-for="(cat, index) in order.cats"
+                >{{ cat.name }}<span v-if="order.cats?.length - 1 > index">, </span></span
+              >
             </p>
             <div class="font-bold">
               <p>Имя: {{ order.name }}</p>
@@ -31,10 +43,10 @@
 </template>
 
 <script setup>
-import {AppIcon, ORDER_STATUS} from "@/shared";
+import { AppIcon, ORDER_STATUS } from '@/shared'
 import { orderEntity } from '@/entities'
-import {onMounted} from "vue";
-import {storeToRefs} from "pinia";
+import { onMounted } from 'vue'
+import { storeToRefs } from 'pinia'
 
 const { orders } = storeToRefs(orderEntity.useStore())
 const { getOrders, orderApprove, orderDecline } = orderEntity.useStore()

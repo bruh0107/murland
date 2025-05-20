@@ -2,12 +2,7 @@
   <div class="parents">
     <div>
       <div class="parents-inner inner">
-        <div class="flex justify-between mb-[60px]">
-          <h2 class="parents-title">Все родители</h2>
-          <router-link to="/admin/parents/add" class="cats-btn__primary">
-            <app-button size="small" color="primary">Добавить родителя</app-button>
-          </router-link>
-        </div>
+        <h2 class="parents-title">Все родители</h2>
         <div class="parents-cards">
           <cat-card
             v-for="parent in parents"
@@ -23,7 +18,6 @@
 </template>
 
 <script setup>
-import { AppButton } from '@/shared'
 import { asyncComputed } from '@vueuse/core'
 import { CatCard } from '@/widgets'
 import { catEntity } from '@/entities'

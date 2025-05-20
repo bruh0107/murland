@@ -11,10 +11,10 @@
     </div>
     <div class="flex items-center gap-5 max-xl:hidden">
       <template v-if="route.name?.startsWith('admin')">
-        <router-link :to='`/admin/cats/edit/${item.id}`'>
+        <router-link :to="`/admin/cats/edit/${item.id}`">
           <app-button size="small" color="primary">Редактировать</app-button>
         </router-link>
-        <app-button @click="deleteCat(id)" size="small" color="delete">Удалить</app-button>
+        <app-button @click="deleteCat(item.id)" size="small" color="delete">Удалить</app-button>
       </template>
       <router-link :to="`cats/${item.id}`" v-else>
         <app-button size="small" color="primary"> Подробнее </app-button>

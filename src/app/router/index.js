@@ -17,7 +17,7 @@ const routes = [
   {
     name: Routes.cat.name,
     path: Routes.cat.path,
-    component: () => import('@/pages/cat-detail-page/CatDetailPage.vue')
+    component: () => import('@/pages/cat-detail-page/CatDetailPage.vue'),
   },
   {
     name: Routes.admin.name,
@@ -47,11 +47,6 @@ const routes = [
         component: () => import('@/features/admin/parents/ui/AdminParents.vue'),
       },
       {
-        name: 'admin.add-parents',
-        path: 'parents/add',
-        component: () => import('@/features/admin/parents/ui/AdminParentsAdd.vue'),
-      },
-      {
         name: 'admin.order',
         path: 'orders',
         component: () => import('@/features/admin/orders/ui/AdminOrders.vue'),
@@ -64,7 +59,7 @@ const routes = [
       {
         name: 'admin.edit-cats',
         path: 'cats/edit/:id',
-        component: () => import('@/features/admin/cats/ui/AdminCatsUpdate.vue')
+        component: () => import('@/features/admin/cats/ui/AdminCatsUpdate.vue'),
       },
     ],
   },

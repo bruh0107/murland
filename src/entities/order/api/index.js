@@ -1,4 +1,4 @@
-import { api } from "@/shared";
+import { api } from '@/shared'
 
 export const getOrders = () => api.get('admin/orders').then(({ data }) => data.orders)
 

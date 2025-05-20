@@ -1,5 +1,11 @@
 <template>
-  <input class="form-input" v-bind="$props" v-mask="mask" v-model="model" @change="emit('change', $event)" />
+  <input
+    class="form-input"
+    v-bind="$props"
+    v-mask="mask"
+    v-model="model"
+    @change="emit('change', $event)"
+  />
 </template>
 
 <script setup>

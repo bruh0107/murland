@@ -9,7 +9,7 @@ export const Routes = {
   },
   cat: {
     path: '/cats/:id',
-    name: 'cat.detail'
+    name: 'cat.detail',
   },
   admin: {
     path: '/admin',
@@ -21,7 +21,6 @@ export const Routes = {
       'add-cat': 'admin.add-cat',
       'edit-cat': 'admin.edit-cat',
       parents: 'admin.parents',
-      'add-parents': 'admin.add-parents',
       orders: 'admin.order',
       contacts: 'admin.contacts',
     },

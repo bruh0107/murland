@@ -9,8 +9,7 @@ export const createCat = (model) =>
     headers: { 'Content-Type': 'multipart/form-data' },
   })
 
-export const updateCat = (id, model) =>
-  api.patch(`admin/cats/${id}`, model)
+export const updateCat = (id, model) => api.patch(`admin/cats/${id}`, model)
 
 export const deleteCat = (id) => api.delete(`admin/cats/${id}`)
 

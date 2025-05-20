@@ -14,7 +14,7 @@ export const useStore = defineStore('contacts', () => {
 
   const updateContacts = async (model) => {
     const { data } = await contactEntity.updateContacts(model)
-    router.push({name: `${Routes.admin.children.cats}`})
+    router.push({ name: `${Routes.admin.children.cats}` })
   }
 
   return {

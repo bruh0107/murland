@@ -1,6 +1,6 @@
-import {defineStore, storeToRefs} from "pinia";
+import { defineStore, storeToRefs } from 'pinia'
 import { orderEntity } from '@/entities'
-import {ref} from "vue";
+import { ref } from 'vue'
 
 export const useStore = defineStore('order', () => {
   const orders = ref([])
@@ -23,6 +23,6 @@ export const useStore = defineStore('order', () => {
     orders,
     getOrders,
     orderApprove,
-    orderDecline
+    orderDecline,
   }
 })
