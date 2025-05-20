@@ -1,4 +1,4 @@
-import { defineStore, storeToRefs } from 'pinia'
+import { defineStore } from 'pinia'
 import { orderEntity } from '@/entities'
 import { ref } from 'vue'
 

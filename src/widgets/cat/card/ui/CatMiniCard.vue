@@ -1,7 +1,7 @@
 <template>
   <div class="cat-mini">
     <app-icon class="cat-mini__cross" name="cross" @click="removeFromCart(item?.id)" />
-    <img class="cat-mini__image" :src="item.image" alt="Изображение" />
+    <img class="cat-mini__image" :src="item.photo" alt="Изображение" />
     <div class="cat-mini__name">{{ item?.name }}</div>
   </div>
 </template>
